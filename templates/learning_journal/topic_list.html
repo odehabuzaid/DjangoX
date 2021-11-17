@@ -1,0 +1,45 @@
+{% extends '_base.html' %} 
+
+{% block content %}
+      <nav aria-label="breadcrumb" class="main-breadcrumb" width="100%">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item ml-auto">
+              <input
+                onclick="window.location.href='{% url 'topic_create'%}'"
+                class="btn btn-info"
+                value="add new"
+              />
+            </li>
+          </ol>
+        </nav>
+
+{% if topic_list %}
+
+  {% for topic in topic_details %}
+
+    <div class="col-sm-6 col-xl-3 mb-3">
+      <div class="card">
+        <div
+          class="card-header border-bottom flex-column align-items-start p-3"
+        >
+          <img src = "https://www.svgrepo.com/show/288038/snack-snacks.svg" width="24" height="24" class="feather feather-box text-secondary h3 stroke-width-1 mb-2" alt="My Happy SVG"/>
+          <h4 class="text-primary font-weight-light mb-2">{{topic.title}}</h4>
+          <p class="font-size-sm mb-0">Student: {{topic.student}}</p>
+        </div>
+        <div class="card-header border-bottom justify-content-center py-4">
+          <button onclick="window.location.href='{% url 'topic_details' topic.pk %}'" class="btn btn-outline-secondary mr-1">Details</button>
+    
+        </div>
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+
+{% else %}
+<p>There are no entries added yet.</p>
+{% endif %} 
+{% endblock %}
+
+
+
+

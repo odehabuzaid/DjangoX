@@ -1,0 +1,32 @@
+{% extends '_base.html' %} {% block content %}
+<div class="container">
+  <div class="col">
+    <div class="row">
+      <div class="jumbotron">
+        <h1 class="display-4">{{ snack_details.title }}</h1>
+        <p class="lead">student: {{ snack_details.student }}</p>
+        <hr class="my-4" />
+        <p>{{ snack_details.entries }}</p>
+        <p class="lead">
+          <input
+            onclick="window.location.href='{% url 'snack_list'%}'"
+            class="btn btn-outline-secondary mr-1"
+            value="Cancel"
+          />
+          <input
+            onclick="window.location.href='{% url 'snack_delete' snack_details.id %}'"
+            class="btn btn-outline-danger mr-1"
+            value="Delete"
+          />
+          <input
+            onclick="window.location.href='{% url 'snack_update' snack_details.id %}'"
+            class="btn btn-outline-info mr-1"
+            value="Update"
+          />
+        </p>
+      </div>
+    </div>
+
+    {% endblock content %}
+  </div></div
+>
