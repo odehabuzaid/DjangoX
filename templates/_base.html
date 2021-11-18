@@ -19,7 +19,7 @@
       type="image/x-icon"
       href="{% static 'images/favicon.ico' %}"
     />
-
+    {% load socialaccount %}
     {% block css %}
     <!-- Bootstrap CSS -->
     <link
@@ -28,7 +28,12 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-
+        <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/brands.min.css"
+      integrity="sha512-lCU0XyQA8yobR7ychVxEOU5rcxs0+aYh/9gNDLaybsgW9hdrtqczjfKVNIS5doY0Y5627/+3UVuoGv7p8QsUFw=="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     {% endblock %}
   </head>
@@ -106,7 +111,7 @@
         </div>
           
         </h5>
-        <a class="p-2 text-dark" href="{% url 'about' %}">About</a>
+        {% comment %} <a class="p-2 text-dark" href="{% url 'about' %}">About</a> {% endcomment %}
         <nav class="my-2 my-md-0 mr-md-3">
           {% if user.is_authenticated %}
           <ul class="navbar-nav ml-auto">
@@ -145,8 +150,8 @@
               >Log in</a
             >
             <a href="{% url 'account_signup' %}" class="btn btn-primary ml-2"
-              >Sign up</a
-            >
+              >Sign up</a>
+            <a href="{% provider_login_url 'google' %}" class="fab fa-google btn ml-2"></a>
           </form>
           {% endif %}
         </nav>

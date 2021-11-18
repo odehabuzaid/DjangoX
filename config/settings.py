@@ -26,13 +26,15 @@ INSTALLED_APPS = [
     # Third-party
     "allauth",
     "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
     "crispy_forms",
     "debug_toolbar",
     # Local
     "accounts",
     "pages",
     "topics",
-  
+    "oauth_app",
 ]
 
 # MIDDLEWARE
@@ -175,3 +177,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK": lambda r: False,
 }
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        },
+    }
+}
+SITE_ID = 0
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
