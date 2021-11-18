@@ -7,29 +7,29 @@ from .models import Topic
 
 class TopicListView(ListView):
     model = Topic
-    template_name = "learning_journal/topic_list.html"
+    template_name = "topics/topic_list.html"
     context_object_name = "topic_list"
 
 
 class TopicDetailView(DetailView):
     model = Topic
-    name = "learning_journal/topic_details.html"
-    context_object_name = "topic_details"
+    name = "topics/topic_detail.html"
+    context_object_name = "topic_detail"
 
 
 class TopicCreateView(CreateView):
     model = Topic
-    name = "learning_journal/topic_create.html"
+    name = "topics/topic_form.html"
     fields = ["title", "student", "entries"]
-
+    context_object_name = "topic_form"
 
 class TopicUpdateView(UpdateView):
     model = Topic
-    name = "learning_journal/topic_update.html"
+    name = "topics/topic_update.html"
     fields = ["title", "student", "entries"]
 
 
 class TopicDeleteView(DeleteView):
     model = Topic
-    name = "learning_journal/topic_delete.html"
+    name = "topics/topic_delete.html"
     success_url = reverse_lazy("topic_list")
